@@ -1,7 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import fetchMock from 'fetch-mock';
-import App from './App';
+
+import StoreProvider from './StoreProvider';
+import AppContainer from './App.container';
 
 const ARTICLES = [
   { name: 'Hiking shoes', weight: 0.7 },
@@ -17,7 +19,11 @@ describe('App', () => {
       'https://packing-list-weight-api.herokuapp.com/articles',
       ARTICLES
     );
-    appWrapper = mount(<App />);
+    appWrapper = mount(
+      <StoreProvider>
+        <AppContainer />
+      </StoreProvider>
+    );
   });
 
   afterEach(() => {
