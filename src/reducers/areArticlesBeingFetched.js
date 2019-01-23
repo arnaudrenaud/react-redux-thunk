@@ -4,6 +4,8 @@ const areArticlesBeingFetched = (state = false, action) => {
       return true;
     case 'FETCH_ARTICLES__RESOLVE':
       return false;
+    case 'FETCH_ARTICLES__REJECT':
+      return false;
     default:
       return state;
   }

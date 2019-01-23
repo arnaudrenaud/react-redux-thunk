@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { toggleArticleSelection } from '../actionCreators';
-import { Article } from '.';
+import Article from '../components/Article';
 
 const mapStateToProps = () => ({});
 

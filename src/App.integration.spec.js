@@ -33,7 +33,7 @@ describe('App', () => {
   describe('before articles fetched', () => {
     it('should render loading status', () => {
       expect(
-        appWrapper.update().find({ 'data-selector': 'App-isLoading' })
+        appWrapper.update().find({ 'data-selector': 'App-fetchingArticles' })
       ).toHaveLength(1);
     });
   });

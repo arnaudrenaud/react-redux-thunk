@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ArticleContainer } from '.';
+import ArticleContainer from '../containers/Article.container';
 
 const ArticleList = ({ articles }) => (
   <ul>

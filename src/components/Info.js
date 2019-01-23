@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
-import { NumberOfSelectedArticlesContainer, WeightContainer } from '.';
+import NumberOfSelectedArticlesContainer from '../containers/NumberOfSelectedArticles.container';
+import WeightContainer from '../containers/Weight.container';
 
 const Info = () => (
   <Fragment>

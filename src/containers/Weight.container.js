@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { Weight } from '.';
+import Weight from '../components/Weight';
 
 const getSelectedArticlesTotalWeight = articles =>
   articles
