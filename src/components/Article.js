@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { AppContext } from '../App';
+
 const Article = ({ handleCheckboxChange, isSelected, name, weight }) => {
   const checkboxId = `checkbox-${name}`;
 
@@ -11,15 +13,24 @@ const Article = ({ handleCheckboxChange, isSelected, name, weight }) => {
       style={{ display: 'block' }}
     >
       <input
+        data-selector={`Article-input-${name}`}
         type="checkbox"
         id={checkboxId}
-        onChange={handleCheckboxChange}
+        onChange={handleCheckboxChange(name)}
         checked={isSelected}
       />
       {`${name} (${weight}kg)`}
     </label>
   );
 };
+
+const ArticleContainer = props => (
+  <AppContext.Consumer>
+    {({ toggleArticleSelection }) => (
+      <Article {...props} handleCheckboxChange={toggleArticleSelection} />
+    )}
+  </AppContext.Consumer>
+);
 
 Article.propTypes = {
   handleCheckboxChange: PropTypes.func.isRequired,
@@ -28,4 +39,5 @@ Article.propTypes = {
   weight: PropTypes.number.isRequired,
 };
 
-export default Article;
+export { Article };
+export default ArticleContainer;

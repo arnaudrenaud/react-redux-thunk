@@ -1,7 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, createContext } from 'react';
 import './App.css';
 
 import { ArticleList, Info } from './components';
+
+const AppContext = createContext();
 
 class App extends Component {
   state = {
@@ -37,22 +39,26 @@ class App extends Component {
 
     return (
       <div className="App">
-        {isLoading ? (
-          <div data-selector="App-isLoading" style={{ marginTop: '1em' }}>
-            Loading…
-          </div>
-        ) : (
-          <Fragment>
-            <ArticleList
-              articles={articles}
-              toggleArticleSelection={this.toggleArticleSelection}
-            />
-            <Info articles={articles} />
-          </Fragment>
-        )}
+        <AppContext.Provider
+          value={{
+            toggleArticleSelection: this.toggleArticleSelection,
+          }}
+        >
+          {isLoading ? (
+            <div data-selector="App-isLoading" style={{ marginTop: '1em' }}>
+              Loading…
+            </div>
+          ) : (
+            <Fragment>
+              <ArticleList articles={articles} />
+              <Info articles={articles} />
+            </Fragment>
+          )}
+        </AppContext.Provider>
       </div>
     );
   }
 }
 
+export { AppContext };
 export default App;
